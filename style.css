@@ -1,0 +1,486 @@
+/* Importar la fuente Oswald desde Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  /* Paleta de colores inspirada en el modal */
+  background-color: #2c3e50; /* Fondo oscuro principal */
+  color: #ecf0f1; /* Texto claro */
+  text-align: center;
+}
+
+/* Fondo animado que simula un ecualizador o barrido de frecuencia */
+@keyframes animated-background {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -200px;
+  }
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(#2c3e50, #2c3e50 19px, #34495e 20px);
+  opacity: 0.1;
+  z-index: -1; /* Se asegura que esté detrás de todo el contenido */
+  animation: animated-background 10s linear infinite;
+}
+
+header {
+  background: linear-gradient(
+    145deg,
+    #3c536b,
+    #2c3e50
+  ); /* Degradado para más profundidad */
+  color: #fff;
+  position: relative; /* Necesario para posicionar la navegación */
+  padding: 2em 0;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(231, 76, 60, 0.5);
+}
+
+header h1 {
+  margin-bottom: 0.2em;
+  font-family: "Oswald", sans-serif; /* Aplicar la nueva fuente */
+  font-size: 2.5em; /* Aumentar ligeramente el tamaño */
+  text-transform: uppercase; /* Convertir a mayúsculas para más impacto */
+  letter-spacing: 1.5px; /* Añadir un poco de espacio entre letras */
+  color: #fff;
+  /* Efecto de brillo tipo neón */
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px #e74c3c;
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.tutorial-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas por defecto */
+  gap: 20px;
+  padding-bottom: 40px;
+}
+
+.tutorial-card {
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* Perspectiva para el efecto 3D y altura fija */
+  perspective: 1000px;
+  height: 220px;
+}
+
+/* Contenedor que se volteará */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+/* Activa la animación al pasar el mouse sobre la tarjeta */
+.tutorial-card:hover .card-inner {
+  transform: rotateX(180deg);
+}
+
+/* Estilos para las caras frontal y trasera */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: #34495e;
+  border: 1px solid #4a627a;
+  text-align: center;
+}
+
+/* Posiciona la cara trasera */
+.card-back {
+  transform: rotateX(180deg);
+}
+
+.hover-indicator {
+  font-size: 0.8em;
+  font-style: italic;
+  color: #7f8c8d;
+  margin-top: 15px;
+}
+
+.tutorial-card h3 {
+  color: #e74c3c; /* Color de acento rojo del modal */
+  margin-top: 0;
+}
+
+.tutorial-card a {
+  display: inline-block;
+  background: #e74c3c; /* Usamos el color de acento rojo */
+  color: #fff;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.tutorial-card a:hover {
+  background: #c0392b; /* Rojo más oscuro al pasar el mouse */
+}
+
+footer {
+  background: #233140; /* Un tono aún más oscuro para el footer */
+  color: #fff;
+  text-align: center;
+  padding: 1em 0;
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+
+footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-contact-button {
+  border: 1px solid #e74c3c;
+  padding: 4px 12px;
+  border-radius: 5px;
+  color: #e74c3c;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.footer-contact-button:hover {
+  background-color: #e74c3c;
+  color: #fff;
+}
+.slogan {
+  font-size: 1.1em;
+  font-style: italic;
+  color: #ecf0f1; /* Gris claro */
+  margin-top: 5px;
+}
+
+/* Animación para el slogan */
+@keyframes fadeInSlogan {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slogan-fade-in {
+  animation: fadeInSlogan 0.8s ease-out forwards;
+}
+
+/* ======================================================= */
+/* Estilos para el Modal de Bienvenida                     */
+/* ======================================================= */
+
+.modal-overlay {
+  display: none; /* Oculto por defecto */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background-color: #2c3e50;
+  color: #ecf0f1;
+  margin: auto;
+  padding: 30px;
+  border: 1px solid #888;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+  position: relative;
+  animation: slide-down 0.5s ease-out;
+}
+
+@keyframes slide-down {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animación para cerrar el modal */
+@keyframes slide-up-out {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+}
+
+/* Aplica la animación de cierre cuando el modal tiene la clase 'closing' */
+.modal-overlay.closing .modal-content {
+  animation: slide-up-out 0.5s ease-in forwards;
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-content input[type="text"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 20px 0;
+  border-radius: 5px;
+  border: 1px solid #7f8c8d;
+  background: #34495e;
+  color: #ecf0f1;
+}
+
+.modal-content button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px;
+  transition: background-color 0.3s;
+}
+
+.modal-content button:hover {
+  background-color: #c0392b;
+}
+
+.modal-content button.secondary {
+  background-color: transparent;
+  border: 1px solid #7f8c8d;
+}
+
+.modal-content button.secondary:hover {
+  background-color: #34495e;
+}
+
+#greeting-content {
+  display: none; /* Oculto hasta que se envía el nombre */
+  padding: 20px;
+  font-size: 1.2em;
+}
+
+/* ======================================================= */
+/* Estilos para la Página de Contacto                      */
+/* ======================================================= */
+
+.contact-container {
+  background-color: #34495e;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 700px;
+  margin: 20px auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #ecf0f1;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #7f8c8d;
+  background: #2c3e50;
+  color: #ecf0f1;
+  font-size: 1em;
+  box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+}
+
+.contact-form .submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.contact-form .submit-button:hover {
+  background-color: #c0392b;
+}
+
+/* Animación para el botón flotante */
+@keyframes fab-pop-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ======================================================= */
+/* Botón Flotante de Contacto (FAB)                        */
+/* ======================================================= */
+
+.floating-contact-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background-color: #e74c3c;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+  animation: fab-pop-in 0.5s ease-out 0.5s forwards;
+  transform: scale(0);
+  opacity: 0;
+}
+
+.floating-contact-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(231, 76, 60, 0.5);
+}
+
+/* ======================================================= */
+/* Sección de Servicios Profesionales                      */
+/* ======================================================= */
+
+.services-section {
+  background-color: #34495e;
+  padding: 50px 20px;
+  margin-top: 40px;
+}
+
+.services-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.services-section h2 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.services-intro {
+  font-size: 1.1em;
+  color: #bdc3c7;
+  margin-bottom: 40px;
+}
+
+.services-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.service-card {
+  background-color: #2c3e50;
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid #4a627a;
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon svg {
+  stroke: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.service-card h3 {
+  color: #ecf0f1;
+  margin-bottom: 15px;
+}
+
+.service-card p {
+  color: #bdc3c7;
+  font-size: 0.95em;
+}
+
+.service-cta {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #e74c3c;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.service-cta:hover {
+  background-color: #c0392b;
+}

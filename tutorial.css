@@ -1,0 +1,61 @@
+/* Estilos específicos para las páginas de tutorial */
+
+.tutorial-content {
+  text-align: left;
+  padding-top: 20px;
+}
+
+.tutorial-content h3 {
+  color: #2980b9;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 5px;
+  margin-top: 30px;
+}
+
+.intro-text {
+  font-size: 1.1em;
+  font-style: italic;
+  color: #555;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 0;
+}
+
+/* Estilos de Monetización (Caja de Afiliado) */
+.affiliate-box {
+  background-color: #ecf0f1;
+  border: 2px solid #2ecc71;
+  padding: 20px;
+  margin: 30px 0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.affiliate-box h4 {
+  color: #27ae60;
+  margin-top: 0;
+}
+
+.affiliate-button {
+  display: inline-block;
+  background: #e74c3c; /* Color llamativo */
+  color: white !important;
+  padding: 15px 30px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.affiliate-button:hover {
+  background: #c0392b;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  font-size: 0.9em;
+}
